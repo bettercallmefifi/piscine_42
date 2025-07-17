@@ -2,24 +2,24 @@
 
 void    ft_putstr(char *str)
 {
-    while(*str)
+    int i = 0;
+    while(str[i])
     {
-        write(1,str,1);
-        str++;
+        write(1,&str[i],1);
+        i++;
     }
 }
 
-int main(int argc, char **argv)
+int main(int argc,char **argv)
 {
-    int i = 1;
-
+    int i = argc - 1;
     if(argc >= 2)
     {
-        while(i < argc)
+        while(i > 0)
         {
             ft_putstr(argv[i]);
             write(1,"\n",1);
-            i++;
+            i--;
         }
     }
     return(0);

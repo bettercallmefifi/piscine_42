@@ -37,7 +37,7 @@ int main()
     {
         for (i = 0; i < size; i++)
             printf("%d ", tab[i]);
-        free(tab); // ما تنساش تحرر الذاكرة
+        free(tab);
     }
     else if (size == 0)
         printf("Empty range\n");

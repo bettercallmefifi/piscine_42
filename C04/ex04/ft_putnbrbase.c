@@ -32,7 +32,7 @@ void	ft_putnbr_base(int nb, char *base)
 	}
 	if(base_value < 2)
 		return;
-	if(doublechar(base))
+	if(doublechar(base)) //==1;
 		return;
 	long long int nbr = nb;
 	int i = 0;

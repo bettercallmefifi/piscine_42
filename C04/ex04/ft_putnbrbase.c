@@ -1,6 +1,6 @@
 #include <unistd.h>
 
-int doublechar(char *base)
+int double_char(char *base)
 {
 	int i;
 	int j;
@@ -19,49 +19,60 @@ int doublechar(char *base)
 	}
 	return(0);
 }
-
-void	ft_putnbr_base(int nb, char *base)
+int	check_base(char	*base)
 {
-	int base_value = 0;
-
-	while(base[base_value] != '\0')
+	int	base_len = 0;
+	while(base[base_len])
 	{
-		if(base[base_value] == '+'|| base[base_value] == '-')
-			return;
-		base_value++;
+		if(base[base_len] == '+' || base[base_len] == '-')
+			return(0);
+		base_len++;
 	}
-	if(base_value < 2)
-		return;
-	if(doublechar(base)) //==1;
-		return;
-	long long int nbr = nb;
-	int i = 0;
+	if(base_len < 2 || base[0] == '\0')
+		return(0);
+	if(double_char(base) == 1)
+		return(0);
+	return(base_len);
+}
+
+void	print_putnbr(long long nbr, char *base, int check)
+{
+	int i;
 	char rest[60];
 
+	i = 0;
 	if(nbr == 0)
 	{
 		write(1,&base[0],1);
 		return;
 	}
-
-	while(nbr < 0)
+	if(nbr < 0)
 	{
 		write(1,"-",1);
 		nbr = -nbr;
 	}
 	while(nbr > 0)
 	{
-		rest[i] = base[nbr % base_value];
-		nbr = nbr / base_value;
-		i++;
+		rest[i++] = base[nbr % check];
+		nbr = nbr / check;
 	}
 	i--;
 	while(i >= 0)
-	{
-		write(1, &rest[i], 1);
-		i--;
-	}
+		write(1, &rest[i--], 1);
 }
+
+void	ft_putnbr_base(int nb, char *base)
+{
+	int	check;
+	long	nbr;
+		
+	check = check_base(base);
+	nbr = nb;
+	if(check_base == 0)
+		return;
+	print_putnbr(nbr, base, check);
+}
+
 int main(void)
 {
     ft_putnbr_base(42, "01");       // Binary representation

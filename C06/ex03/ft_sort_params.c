@@ -1,62 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sort_params.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feel-idr <feel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/24 16:29:45 by feel-idr          #+#    #+#             */
+/*   Updated: 2025/08/25 11:33:07 by feel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-void    ft_putchar(char c)
+void	ft_putstr(char *str)
 {
-    write(1,&c,1);
-}
+	int	i;
 
-void    ft_putstr(char *str)
-{
-    while(*str)
-    {
-        write(1,str++,1);
-    }
-}
-
-int     ft_strcmp(char *str, char *src)
-{
-    int i = 0;
-    while(str[i] == src[i] && str[i] != '\0')
-    {
-        i++;
-    }
-    return(str[i] - src[i]);
-}
-
-char **ft_str_sort(int argc, char **argv)
-{
-    char *buf;
-	int i;
-
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (str[i])
 	{
-		while (i < argc - 1)
-		{
-			if (ft_strcmp(argv[i], argv[i + 1]) > 0)
-			{
-				buf = argv[i + 1];
-				argv[i + 1] = argv[i];
-				argv[i] = buf;
-			}
-			i++;
-		}
-		i = 1;
-		argc--;
+		write(1, &str[i], 1);
+		i++;
 	}
-	return (argv);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] == s2[i] && s1[i])
+		i++;
+	return (s1[i] - s2[i]);
 }
 
 int	main(int argc, char **argv)
 {
-	char **mod = ft_str_sort(argc, argv);
-	int i = 1;
-	while (i < argc)
+	int		i;
+	char	*swp;
+
+	i = 0;
+	while (++i < argc -1)
+	{
+		if (ft_strcmp(argv[i], argv[i + 1]) > 0)
+		{
+			swp = argv[i];
+			argv[i] = argv[1 + i];
+			argv[1 + i] = swp;
+			i = 0;
+		}
+	}
+	i = 0;
+	while (++i < argc)
 	{
 		ft_putstr(argv[i]);
-		if (i < argc - 1)
-			ft_putchar('\n');
-		i++;
+		write(1, "\n", 1);
 	}
-	return (0);
 }

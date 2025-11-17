@@ -1,33 +1,52 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feel-idr <feel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/20 10:07:10 by feel-idr          #+#    #+#             */
+/*   Updated: 2025/08/20 18:11:56 by feel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int	ft_strlen(char *str)
 {
-	int i = 0;
-	while(str[i])
+	int	i;
+
+	i = 0;
+	while (str[i])
 		i++;
-	return(i);
+	return (i);
 }
 
-char	*ft_strncat(char *dest, char *src, unsigned int n)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int len = ft_strlen(dest);
-	unsigned int i = 0;
+	unsigned int	i;
+	unsigned int	len_dest;
 
-	while(src[i] != '\0' && i < n)
+	i = 0;
+	len_dest = (unsigned int)ft_strlen(dest);
+	while (src[i] && i < nb)
 	{
-		dest[len] = src[i];
+		dest[len_dest] = src[i];
 		i++;
-		len++;
+		len_dest++;
 	}
-	dest[len] = '\0';
-	return(dest);
+	dest[len_dest] = '\0';
+	return (dest);
 }
+/*
+#include <stdio.h>
 
 int main()
 {
-	char str[] = "el idrissi";
-	char dest[30]="ferdaous ";
+    char str[]="ferdaous ";
+    char dest[30] = "el idrissi";
+    
+    char *result = ft_strncat(dest,str,20);
+    printf("%s\n",result);
+    return(0);
 
-	printf("%s\n",ft_strncat(dest,str,4));
-	return(0);
 }
+*/

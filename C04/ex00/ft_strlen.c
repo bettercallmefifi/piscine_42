@@ -1,18 +1,21 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feel-idr <feel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/20 18:49:52 by feel-idr          #+#    #+#             */
+/*   Updated: 2025/08/20 18:50:33 by feel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int	ft_strlen(char *str)
 {
-	int len = 0;
-	while(str[len] != '\0')
-	{
-		len++;
-	}
-	return(len);
-}
-int main()
-{
-	char str[] = "1337";
-	int len = ft_strlen(str);
-	printf("%d\n",len);
-	return(0);
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

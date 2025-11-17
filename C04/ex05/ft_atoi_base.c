@@ -1,97 +1,90 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feel-idr <feel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/24 00:24:31 by feel-idr          #+#    #+#             */
+/*   Updated: 2025/08/24 00:24:47 by feel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int	ft_strlen(char *str)
 {
-	int i = 0;
-	while(str[i])
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
 		i++;
-	return(i);
+	}
+	return (i);
 }
 
-int	doublechar(char *base)
+int	valid(char *base)
 {
-	int i;
-	int j;
-	int value = ft_strlen(base);
-	i = 0;
-	if(base[0] == '\0' || value == 1)
-		return(1);
+	int	i;
+	int	j;
 
-	while(base[i] != '\0')
+	i = 0;
+	if (!base || base[0] == '\0' || base[1] == '\0')
+		return (0);
+	i = 0;
+	while (base[i])
 	{
+		if (base[i] == '-' || base[i] == '+' || base[i] <= 32 || base[i] == 127)
+			return (0);
 		j = i + 1;
-		while(base[j] != '\0')
+		while (base[j])
 		{
-			if(base[i] == base[j])
-				return (1);
+			if (base[i] == base[j])
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	return(0);
+	return (1);
 }
 
-int    check(char c, char *base)
+int	is_digit(char *base, char c)
 {
-    int    j;
-    int    len;
+	int	i;
 
-    j = 0;
-    len = ft_strlen(base);
-    while (j < len)
-    {
-        if (c == base[j])
-            return (j);
-        j++;
-    }
-    return (-1);
-}
-
-int	ft_atoi_base(char *str,char *base)
-{
-	int base_value = 0;
-	while(base[base_value])
+	i = 0;
+	while (base[i])
 	{
-		if(base[base_value] == '+'|| base[base_value] == '-'
-				|| base[base_value] == ' '
-				|| (base[base_value] >= 9 && base[base_value] <= 13) || base[base_value] == 127)
-			return(0);
-		base_value++;
-	}
-	if(base_value < 2)
-		return(0);
-	if(doublechar(base))
-		return(0);
-
-	int i = 0;
-	int result = 0;
-	int signe = 1;
-	while(str[i] == ' ' ||(str[i] <= 9 && str[i] >= 13))
-		i++;
-	while(str[i] == '-' || str[i] == '+')
-	{
-		if(str[i] == '-')
-			signe *= -1;
+		if (base[i] == c)
+			return (i);
 		i++;
 	}
-	while(str[i])
-	{
-		int j = check(str[i],base);
-		if(j == -1)
-			break;
-		
-		result = result * ft_strlen(base) + j;
-		i++;
-	}
-	return(result * signe);
-}
-#include <stdio.h>
-int main()
-{
-	char str[] = "-+-1337is";
-	char base[] = "0123";
-	int result = ft_atoi_base(str,base);
-	printf("%d\n",result);
-	return(0);
+	return (-1);
 }
 
+int	ft_atoi_base(char *str, char *base)
+{
+	int	sign;
+	int	result;
+	int	digit;
+	int	i;
+	int	len;
+
+	if (!valid(base))
+		return (0);
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	sign = 1;
+	while (str[i] == '-' || str[i] == '+')
+		if (str[i++] == '-')
+			sign *= -1;
+	result = 0;
+	len = ft_strlen(base);
+	while (is_digit(base, str[i]) != -1)
+	{
+		digit = is_digit(base, str[i]);
+		result = result * len + digit;
+		i++;
+	}
+	return (sign * result);
+}

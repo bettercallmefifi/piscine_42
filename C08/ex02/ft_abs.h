@@ -1,6 +1,18 @@
-#ifndef FT_ABS_H
-#define FT_ABS_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_abs.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feel-idr <feel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/31 12:44:55 by feel-idr          #+#    #+#             */
+/*   Updated: 2025/08/31 12:47:58 by feel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# define ABS(Value) (((Value) < 0)? - (Value) : (Value))
+#ifndef FT_ABS_H
+# define FT_ABS_H
+
+# define ABS(value) ((value > 0) * (value)) + ((value < 0) * (-value))
 
 #endif

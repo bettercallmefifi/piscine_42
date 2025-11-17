@@ -1,16 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feel-idr <feel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/13 18:22:21 by feel-idr          #+#    #+#             */
+/*   Updated: 2025/08/13 23:48:36 by feel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-void	ft_print_numbers()
+void	ft_print_numbers(void)
 {
-    char n = '0';
-    while(n <= '9')
-    {
-        write(1,&n,1);
-        n++;
-    }
+	char	n;
+
+	n = '0';
+	while (n <= '9')
+	{
+		write(1, &n, 1);
+		n++;
+	}
 }
-int main()
+/*int main()
 {
-    ft_print_numbers();
-    return(0);
-}
+	ft_print_numbers();
+	return(0);
+}*/

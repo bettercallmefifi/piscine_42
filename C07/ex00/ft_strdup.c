@@ -1,38 +1,56 @@
-
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feel-idr <feel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/27 13:03:18 by feel-idr          #+#    #+#             */
+/*   Updated: 2025/08/27 13:26:47 by feel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdlib.h>
 
-int     ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-    int i = 0;
+	int	i;
 
-    while(str[i] != '\0')
-    {
-        i++;
-    }
-    return i;
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-char    *ft_strdup(char *src)
+char	*ft_strdup(char *src)
 {
-    int len = ft_strlen(src);
-    char *rest = malloc(len + 1);
-    int j = 0;
-    if(!rest)
-        return NULL;
-    while(src[j])
-    {
-        rest[j] = src[j];
-        j++;
-    }
-    rest[j] = '\0';
-    return(rest);
+	int		len;
+	int		i;
+	char	*arr;
+
+	i = 0;
+	len = ft_strlen(src);
+	arr = (char *)malloc(len + 1);
+	if (!arr)
+		return (NULL);
+	while (src[i])
+	{
+		arr[i] = src[i];
+		i++;
+	}
+	arr[i] = '\0';
+	return (arr);
 }
-int main(){
-    char src[]= "hey ferdaous";
-    char *rest;
-    rest = ft_strdup(src);
-    printf("%s\n", rest);
-    free(rest);
+/*
+#include <stdio.h>
+
+int	main()
+{
+	char src[] = "ferdaous";
+	char *result;
+	result = ft_strdup(src);
+	printf("%s\n",result);
+	free (result);
+	return (0);
 }
+*/

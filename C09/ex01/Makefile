@@ -1,26 +1,30 @@
-
-.PHONY: all clean fclean re
-
 NAME = libft.a
-SRC = srcs/ft_putchar.c srcs/ft_swap.c srcs/ft_putstr.c srcs/ft_strlen.c srcs/ft_strcmp.c 
-OBJ := $(SRC:.c=.o)
-CFLAGS = -Wall -Werror -Wextra
-INCLUDES = -I includes
 
+SRCS = srcs/ft_putchar.c srcs/ft_putstr.c \
+    srcs/ft_swap.c srcs/ft_strlen.c \
+    srcs/ft_strcmp.c
 
-all: $(NAME)
+OBJS = ${SRCS:.c=.o}
 
-$(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+CC  = gcc
+CFLAGS = -Wall -Wextra -Werror
+INCLUDES = ./includes/
+RM = rm -f
+LIBC = ar -rc
+
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	${CC} ${CFLAGS} -c $< -o $@ -I ${INCLUDES}
+
+${NAME}: ${OBJS}
+	${LIBC} ${NAME} ${OBJS}
+
+all: ${NAME}
 
 clean:
-	rm -f $(OBJ)
+	 ${RM} ${OBJS}
 
 fclean: clean
-	rm -f $(NAME)
+	 ${RM} ${NAME}
 
 re: fclean all

@@ -1,14 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feel-idr <feel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/24 13:43:12 by feel-idr          #+#    #+#             */
+/*   Updated: 2025/08/25 11:46:54 by feel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
-int main(int argc, char **argv)
+
+int	main(int argc, char **argv)
 {
-    int i = 0;
-    if(argc == 2)
-    {
-        while(argv[1][i] != '\0')
-        {
-            write(1,&argv[1][i],1);
-            i++;
-        }
-    }
-    return(0);
+	int	i;
+
+	i = 0;
+	if (argc > 0)
+	{
+		while (argv[0][i] != '\0')
+		{
+			write(1, &argv[0][i], 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
 }

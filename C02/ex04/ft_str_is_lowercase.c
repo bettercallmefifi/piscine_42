@@ -1,22 +1,35 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feel-idr <feel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/17 16:47:32 by feel-idr          #+#    #+#             */
+/*   Updated: 2025/08/18 13:33:55 by feel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int	ft_str_is_lowercase(char *str)
 {
-	int i = 0;
-	while(str[i] != '\0')
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if(!(str[i] >= 'a' && str[i] <= 'z'))
-			return(0);
+		if (!(str[i] >= 'a' && str[i] <= 'z'))
+			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }
+/*
+#include <stdio.h>
 
 int main()
 {
-	char str[] = "ferdaous";
-	char dest[]="Ferdaous";
-	printf("%d\n",ft_str_is_lowercase(str));
-	printf("%d\n",ft_str_is_lowercase(dest));
+	char str[] = "";
+	int rest = ft_str_is_lowercase(str);
+	printf("%d\n",rest);
 	return(0);
-}
+}*/

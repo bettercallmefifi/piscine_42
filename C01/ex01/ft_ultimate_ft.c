@@ -1,33 +1,46 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultimate_ft.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feel-idr <feel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/16 15:17:17 by feel-idr          #+#    #+#             */
+/*   Updated: 2025/08/16 15:28:09 by feel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 void	ft_ultimate_ft(int *********nbr)
 {
 	*********nbr = 42;
 }
+/*
+#include <stdio.h>
+
 int main()
 {
 	int a;
-	int *ptr;
-	int **ptr1;
-	int ***ptr2;
-	int ****ptr3;
-	int *****ptr4;
-	int ******ptr5;
-	int *******ptr6;
-	int ********ptr7;
-	int *********ptr8;
+	int *p1;
+	int **p2;
+	int ***p3;
+	int ****p4;
+	int *****p5;
+	int ******p6;
+	int *******p7;
+	int ********p8;
+	int *********p9;
 
-	ptr8 = &ptr7;
-	ptr7 = &ptr6;
-	ptr6 = &ptr5;
-	ptr5 = &ptr4;
-	ptr4 = &ptr3;
-	ptr3 = &ptr2;
-	ptr2 = &ptr1;
-	ptr1 = &ptr;
-	ptr = &a;
-	
-	 ft_ultimate_ft(ptr8);
+	p1 = &a;
+	p2 = &p1;
+	p3 = &p2;
+	p4 = &p3;
+//	p5 = &p4;
+	p6 = &p5;
+	p7 = &p6;
+	p8 = &p7;
+	p9 = &p8;
+
+	ft_ultimate_ft(p9);
 	printf("%d\n",a);
 	return(0);
-}
+}*/

@@ -1,37 +1,52 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feel-idr <feel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/27 13:12:45 by feel-idr          #+#    #+#             */
+/*   Updated: 2025/08/27 13:26:20 by feel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-int *ft_range(int min, int max)
+int	*ft_range(int min, int max)
 {
-    int *rest;
-    int len_arr = max - min;
-    int i = 0;
-    if(min > max)
-        return NULL;
-    rest = malloc(sizeof(int) * len_arr);
-    if(!rest)
-        return NULL;
-    while(min < max)
-    {
-        rest[i] = min;
-        i++;
-        min++;
-    }
-    return(rest);
+	int	len;
+	int	*arr;
+	int	i;
+
+	len = max - min;
+	arr = (int *)malloc(sizeof(int) * len);
+	i = 0;
+	if (!arr)
+		return (NULL);
+	if (min >= max)
+		return (NULL);
+	while (max > min)
+	{
+		arr[i] = min;
+		i++;
+		min++;
+	}
+	return (arr);
 }
+/*
+#include <stdio.h>
 
 int main()
 {
-    int *rest = ft_range(0,12);
-    int i = 0;
-    if(rest == NULL)
-        return(1);
-    while(i < 12 - 0)
-    {
-        printf("%d",rest[i]);
-        i++;
-    }
-    printf("\n");
-    free(rest);
-    return(0);
+	int *tab;
+	int i = 0;
+
+	tab = ft_range(-1, 4);
+	for(i = 0; i < 4 - (-1);i++)
+	{
+		printf("%d",tab[i]);
+	}
+	free (tab);
+	return(0);
 }
+*/

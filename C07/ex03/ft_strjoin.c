@@ -1,83 +1,98 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feel-idr <feel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/27 15:21:59 by feel-idr          #+#    #+#             */
+/*   Updated: 2025/08/27 16:09:21 by feel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-int doublestrlen(int size, char **strs) {
-    int i;
-    int count = 0;
-    int j = 0;
+int	ft_strlen(char *str)
+{
+	int	len;
 
-    while(j < size) {
-        i = 0;
-        while (strs[j][i] != '\0') {
-            count++;
-            i++;
-        }
-        j++;
-    }
-    return count;
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }
 
-int addsep(char *join, char *sep, int position) {
-    int i = 0;
+char	*ft_strcat(char *dest, char *src)
+{
+	int	i;
+	int	len_dest;
 
-    while (sep[i]) {
-        join[position] = sep[i];
-        i++;
-        position++;
-    }
-    return position;
+	i = 0;
+	len_dest = ft_strlen(dest);
+	while (src[i])
+		dest[len_dest++] = src[i++];
+	dest[len_dest] = '\0';
+	return (dest);
 }
 
-char *strjoin(int size, char **strs, char *sep) {
-	int begin = 0;
-	int sep_len = 0;
-	int total_len;
-	char *join;
+int	ft_total_length(int size, char **strs, char *sep)
+{
+	int	i;
+	int	total_str_len;
+	int	sep_len;
 
-    if (size == 0) {
-		char *empty = malloc(1);
-		if (empty)
-			empty[0] = '\0';
-		return empty;
+	total_str_len = 0;
+	sep_len = ft_strlen(sep);
+	i = 0;
+	while (i < size)
+		total_str_len += ft_strlen(strs[i++]);
+	return (total_str_len + sep_len * (size - 1) + 1);
+}
+
+char	*ft_strjoin(int size, char **strs, char *sep)
+{
+	char	*result;
+	int		i;
+
+	i = 0;
+	if (size == 0)
+	{
+		result = (char *)malloc(1);
+		if (!result)
+			return (NULL);
+		result[0] = '\0';
+		return (result);
 	}
-
-	while (sep[sep_len] != '\0')
-		sep_len++;
-    total_len = doublestrlen(size, strs) + (sep_len * (size - 1));
-
-    join = malloc(total_len + 1);
-    if (!join)
-        return NULL;
-
-    int add = 0;
-    while (begin < size) {
-        int i = 0;
-        while (strs[begin][i] != '\0') {
-            join[add] = strs[begin][i];
-            add++;
-            i++;
-        }
-        if (begin + 1 < size)
-            add = addsep(join, sep, add);
-		begin++;
-    }
-    join[add] = '\0';
-    return join;
+	result = (char *)malloc(sizeof(char) * ft_total_length(size, strs, sep));
+	if (!result)
+		return (NULL);
+	result[0] = '\0';
+	while (i < size)
+	{
+		ft_strcat(result, strs[i]);
+		if (i < size - 1)
+			ft_strcat(result, sep);
+		i++;
+	}
+	return (result);
 }
-
-
+/*
 #include <stdio.h>
+int main(void)
+{
+    char *words[] = {"Hello", "world", "this", "is", "C"};
+    int size = 5;
+    char *separator = " , ";
+    char *result = ft_strjoin(size, words, separator);
 
-int main() {
-    char *strings[] = {"Hello", "World", "42"};
-    char *separator = " ";
-    int size = 3;
-
-    char *result = strjoin(size, strings, separator);
-    if (result) {
-        printf("Joined string: %s\n", result);
-        free(result);
-	}
-
-    return 0;
-}
+    if (result == NULL)
+    {
+        printf("Memory allocation failed\n");
+        return (1);
+    }
+    printf("Joined string: %s\n", result);
+    
+    free(result);
+    return (0);
+    }
+*/

@@ -1,28 +1,39 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: feel-idr <feel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/16 15:39:08 by feel-idr          #+#    #+#             */
+/*   Updated: 2025/08/16 15:39:11 by feel-idr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-
-void	 ft_swap(int *a, int *b)
+void	ft_swap(int *a, int *b)
 {
-	int tmp;
+	int	tmp;
 
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
 }
+/*
+#include <stdio.h>
 
 int main()
 {
-	int i = 42;
-	int j = 1337;
+	int a = 0;
+	int b = 9;
 
-	int *p ;
-	int *ptr;
+	int *p1;
+	int *p2;
 
-	p = &i;
-	ptr = &j;
+	p1 = &a;
+	p2 = &b;
 
-	ft_swap(p,ptr);
+	ft_swap(p1,p2);
 
-	printf("i = %d et j = %d\n",i,j);
+	printf("%d\n%d\n",a,b);
 	return(0);
-}
+}*/
